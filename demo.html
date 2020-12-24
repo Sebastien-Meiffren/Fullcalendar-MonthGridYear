@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo - monthGridYear</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+            integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css">
+</head>
+<body>
+<div id="calendar"></div>
+
+<script src="monthGridYear.js"></script>
+<script>
+    // Poorly generated data for the example
+
+    var events = [];
+    for(var i = 0; i < 50; i++) {
+        var month = Math.round(i / 4) + 1;
+        if (month < 10) {
+            month = "0" + month;
+        }
+        var day = ("0" + (Math.round((Math.random() * 100)) % 28 + 1)).substr(0, 2);
+        events.push({
+            "title": "Task " + i,
+            "url": "url" + i,
+            "start": new Date().getFullYear() + "-" + month + "-" + day
+        });
+    }
+
+    // Loading the calendar
+    var calendar = null;
+    $(document).ready(function () {
+        var calendarEl = document.getElementById('calendar'); // ID of the div
+        calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'monthGridYear', // Name of the new view
+            events: events,
+            headerToolbar: {
+                left: 'monthGridYear dayGridMonth',
+                center: 'title'
+            },
+            views: {
+                monthGridYear: MonthGridYear // Definition of the view
+            }
+        });
+        calendar.render();
+        calendar.render(); // There is a limitation for the calculation of the height / width. Need to render once
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
+</body>
+</html>

@@ -17,7 +17,7 @@ Currently, you need to refresh the render to make sure that the height / width o
 3. make sure you have bootstrap installed
 4. include the new view in your setup of FullCalendar
 
-``
+
 
             initialView: 'MonthGridYear',
             headerToolbar: {
@@ -27,6 +27,7 @@ Currently, you need to refresh the render to make sure that the height / width o
             views: {
                 monthGridYear: MonthGridYear
             }
-``
+
 
 ## Demo
+_see [demo.html](demo.html)_
